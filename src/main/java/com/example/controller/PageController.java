@@ -11,12 +11,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.DosenModel;
 import com.example.model.MataKuliahModel;
+import com.example.model.NilaiMkModel;
 import com.example.model.UserModel;
+import com.example.service.NilaiService;
 
 @Controller
 public class PageController {
 	//@Autowired
 	//CourseService courseDAO;
+	
+	@Autowired
+	NilaiService nilaiDAO;
+	
 	DosenModel dosen;
 	
 	public PageController() {
@@ -68,14 +74,21 @@ public class PageController {
 
 	@RequestMapping("/dashboard")
 	public String dashboard(Model model) {
+		
 		model.addAttribute("dosen", this.dosen);
 		
 		return "dashboard";
 	}
 	
-	@RequestMapping("/detail/{id}")
-	public String detailMataKuliah(Model model, @PathVariable(value = "id") String id) {
-		return "detail-mata-kuliah";
+	@RequestMapping("/detail/{kode_mk}")
+	public String detailMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
+		List<NilaiMkModel> kumpulanNilai = nilaiDAO.lihatNilai(kode_mk);
+		if (kumpulanNilai != null) {
+			model.addAttribute("kumpulanNilai", kumpulanNilai);
+			return "detail-mata-kuliah";
+		} else {
+			return "dashboard";
+		}
 	}
 	
 	@RequestMapping("/statistik/{id}")
@@ -87,6 +100,7 @@ public class PageController {
 	
 	@RequestMapping("/nilai/{id}")
 	public String isiNilai(Model model, @PathVariable(value = "id") String id) {
+		
 		return "isi-nilai";
 	}
 }

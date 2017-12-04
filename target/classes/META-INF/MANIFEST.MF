@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: Penilaian
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: heramentari
+Built-By: radit
 Implementation-Vendor-Id: com.example
-Build-Jdk: 1.8.0_144
+Build-Jdk: 1.8.0_112
 Implementation-URL: http://projects.spring.io/spring-boot/PenilaianCon
  sumer/
 Created-By: Maven Integration for Eclipse

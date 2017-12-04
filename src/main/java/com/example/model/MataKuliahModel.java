@@ -14,7 +14,6 @@ public class MataKuliahModel {
 	private String kode_mk;
 	private Integer kuota;
 	private Integer sks;
-	
 	private List<DosenModel> dosens;
 	private List<MahasiswaModel> mahasiswas;
 }

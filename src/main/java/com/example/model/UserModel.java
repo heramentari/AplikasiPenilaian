@@ -14,6 +14,5 @@ public class UserModel {
 	private String password;
 	private String nama;
 	private Integer id_role;
-	
 	private RoleModel role;
 }
