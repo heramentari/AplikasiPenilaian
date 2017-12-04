@@ -9,11 +9,12 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MataKuliahModel {
-	private Integer id;
+	private int id;
 	private String nama;
 	private String kode_mk;
-	private Integer kuota;
-	private Integer sks;
+	private int kuota;
+	private String periode;
+	private int sks;
 	private List<DosenModel> dosens;
 	private List<MahasiswaModel> mahasiswas;
 }
