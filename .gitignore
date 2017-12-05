@@ -5,3 +5,4 @@ target/classes/META-INF/maven/com.example/PenilaianConsumer/pom.properties
 /bin/
 /.classpath
 /.project
+/.DS_Store
