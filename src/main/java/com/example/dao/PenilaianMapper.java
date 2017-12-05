@@ -1,13 +1,16 @@
 package com.example.dao;
 
+import java.sql.JDBCType;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Many;
+import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.type.JdbcType;
 
 import com.example.model.*;
 
@@ -16,17 +19,49 @@ public interface PenilaianMapper {
 	
 	@Select("SELECT * FROM users WHERE username = #{username}")
 	@Results(value = {
-			@Result(property = "id", column = "id"),
+			@Result(property = "user_id", column = "user_id"),
 			@Result(property = "username", column = "username"),
 			@Result(property = "password", column = "password"),
 			@Result(property = "nama", column = "nama"),
 			@Result(property = "role", column = "role"),
-			@Result(property = "matakuliahs", column = "id",
+			@Result(property = "matakuliahs", column = "user_id",
 					javaType = List.class,
 					many = @Many(select = "selectCoursesByUser"))
 	})
 	UserModel selectUser(@Param("username") String username);
 	
-	@Select("SELECT * FROM mk_users, mata_kuliah WHERE mata_kuliah.kode_mk = mk_users.kode_mk AND mk_users.id = #{id}")
+	@Select("SELECT * FROM users WHERE user_id = #{id}")
+	@Results(value = {
+			@Result(property = "user_id", column = "user_id"),
+			@Result(property = "nama", column = "nama")
+	})
+	UserModel selectUserById(@Param("id") String id);
+	
+	@Select("SELECT * FROM mata_kuliah WHERE kode_mk = #{kode_mk}")
+	@Results(value = {
+			@Result(property = "kode_mk", column = "kode_mk"),
+			@Result(property = "nama", column = "nama"),
+			@Result(property = "kuota", column = "kuota"),
+			@Result(property = "periode", column = "periode"),
+			@Result(property = "sks", column = "sks"),
+			@Result(property = "nilais", column = "kode_mk",
+					javaType = List.class,
+					many = @Many(select = "selectScoresByCourse"))
+	})
+	MataKuliahModel selectCourse(@Param("kode_mk") String kode_mk);
+	
+	@Select("SELECT * FROM nilai_mk WHERE kode_mk = #{kode_mk}")
+	@Results(value = {
+			@Result(property = "id", column = "id"),
+			@Result(property = "npm", column = "npm"),
+			@Result(property = "kode_mk", column = "kode_mk"),
+			@Result(property = "nilai", column = "nilai"),
+			@Result(property = "mahasiswa", column = "npm",
+					javaType = UserModel.class,
+					one = @One(select = "selectUserById"))
+	})
+	List<NilaiMkModel> selectScoresByCourse(@Param("kode_mk") String kode_mk);
+	
+	@Select("SELECT * FROM mk_users, mata_kuliah WHERE mata_kuliah.kode_mk = mk_users.kode_mk AND mk_users.user_id = #{id}")
 	List<MataKuliahModel> selectCoursesByUser(@Param("id") String id);
 }

@@ -20,21 +20,21 @@
 						<p class="card-text">
 							<div class="row">
 								<div class="col-sm-5">Kode</div>
-								<div class="col-sm-5" th:text="${matkul.kode_mk}"></div> <!-- ${matakuliah.kode_mk} -->
+								<div class="col-sm-5" th:text="${mk.kode_mk}"></div>
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Mahasiswa</div>
-								<div class="col-sm-5" th:text="${matkul.kuota}"></div> <!-- ${#lists.size(matakuliah.mahasiswas)} -->
+								<div class="col-sm-5" th:text="${mk.kuota}"></div>
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Term</div>
-								<div class="col-sm-5" th:text="${matkul.periode}"></div> <!-- ${matakuliah.periode} -->
+								<div class="col-sm-5" th:text="${mk.periode}"></div> 
 							</div>
 							<hr/>
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<a href="/nilai/CSC01"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
-									<a href="/statistik/CSC01"><button class="btn btn-primary btn-round" type="button">Statistik</button></a>
+									<a th:href="@{'/nilai/' + mk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+									<a th:href="@{'/statistik/' + mk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Statistik</button></a>
 								</div>
 							</div>
 						</p>
@@ -44,7 +44,7 @@
 			<div class="col-sm-8">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title" th:text="${matkul.nama}">Arsitektur dan Pemrograman Aplikasi Perusahaan</h4>
+						<h4 class="card-title" th:text="${mk.nama}">Arsitektur dan Pemrograman Aplikasi Perusahaan</h4>
 						<p class="card-text">
 							<table class="table table-striped">
 								<thead>
@@ -57,10 +57,10 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="nilaiMk, iterationStatus : ${kumpulanNilai}">
+									<tr th:each="nilaiMk, iterationStatus : ${mk.nilais}">
 						                <td th:text="${iterationStatus.count}"></td>
 						                <td th:text="${nilaiMk.npm}"></td>
-						                <td th:text="${nilaiMk.nama_mahasiswa}"></td>
+						                <td th:text="${nilaiMk.mahasiswa.nama}"></td>
 						                <td th:text="${nilaiMk.nilai}"></td>
 						                <td th:if="${nilaiMk.nilai>=85}">A</td>
 						                <td th:if="${nilaiMk.nilai>=80}" th:unless="${nilaiMk.nilai>=85}">A-</td>
@@ -72,13 +72,6 @@
 						                <td th:if="${nilaiMk.nilai>=50}" th:unless="${nilaiMk.nilai>=55}">D</td>
 						                <td th:unless="${nilaiMk.nilai>=50}">E</td>
 						            </tr>
-									<!-- tr th:each="mk,iterationStatus: ${dosen.matakuliahs}">
-										<td th:text="${iterationStatus.count}"></td>
-										<td th:text="${mk.kode_mk}"></td>
-										<td th:text="${mk.nama}"></td>
-										<td th:text="${mk.sks}"></td>
-										<td><a th:href="${'/detail/' + mk.kode_mk}">Lihat</a></td>
-									</tr-->
 								</tbody>
 							</table>
 

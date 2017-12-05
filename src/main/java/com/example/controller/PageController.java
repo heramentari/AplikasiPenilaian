@@ -1,8 +1,5 @@
 package com.example.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
@@ -29,8 +26,6 @@ public class PageController {
 	@Autowired
 	MataKuliahService mataKuliahDAO;
 	
-	NilaiMkModel nilaiModel;
-	
 	@RequestMapping("/login")
 	public String login(Model model) {
 		return "login";
@@ -49,16 +44,9 @@ public class PageController {
 	
 	@RequestMapping("/detail/{kode_mk}")
 	public String detailMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
-		MataKuliahModel matkul = mataKuliahDAO.deskripsiMatkul(kode_mk);
-		
-		List<NilaiMkModel> kumpulanNilai = nilaiDAO.lihatNilai(kode_mk);
-		if (kumpulanNilai != null) {
-			model.addAttribute("kumpulanNilai", kumpulanNilai);
-			model.addAttribute("matkul", matkul);
-			return "detail-mata-kuliah";
-		} else {
-			return "dashboard";
-		}
+		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
+		model.addAttribute("mk", mk);
+		return "detail-mata-kuliah";
 	}
 	
 	@RequestMapping("/statistik/{id}")

@@ -8,9 +8,10 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class NilaiMkModel {
-	private int id;
+	private Integer id;
 	private String kode_mk;
 	private String npm;
-	private double nilai;
-	private String nama_mahasiswa;
+	private Double nilai;
+	
+	private UserModel mahasiswa;
 }

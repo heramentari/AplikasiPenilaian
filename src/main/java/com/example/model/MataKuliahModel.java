@@ -12,9 +12,11 @@ public class MataKuliahModel {
 	private Integer id;
 	private String nama;
 	private String kode_mk;
+	private String periode;
 	private Integer kuota;
 	private Integer sks;
 	
 	private List<UserModel> dosens;
 	private List<UserModel> mahasiswas;
+	private List<NilaiMkModel> nilais;
 }
