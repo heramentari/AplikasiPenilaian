@@ -9,11 +9,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class UserModel {
-	private Integer id;
+	private String id;
 	private String username;
 	private String password;
 	private String nama;
-	private Integer id_role;
+	private String role;
 	
-	private RoleModel role;
+	private List<MataKuliahModel> matakuliahs;
 }

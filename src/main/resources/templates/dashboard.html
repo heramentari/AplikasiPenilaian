@@ -19,11 +19,11 @@
 						<p class="card-text">
 							<div class="row">
 								<div class="col-sm-5">NIP</div>
-								<div class="col-sm-5" th:text="${dosen.nip}"></div>
+								<div class="col-sm-5" th:text="${dosen.id}"></div>
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Nama</div>
-								<div class="col-sm-5" th:text="${dosen.user.nama}"></div>
+								<div class="col-sm-5" th:text="${dosen.nama}"></div>
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Kelas diajar</div>
@@ -32,7 +32,9 @@
 							<hr/>
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<button class="btn btn-primary btn-round" type="button">Logout</button>
+									<form th:action="@{/logout}" method="post">
+										<input type="submit" value="Logout" class="btn btn-primary btn-round"/>
+									</form>
 								</div>
 							</div>
 						</p>

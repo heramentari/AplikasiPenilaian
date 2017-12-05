@@ -15,6 +15,6 @@ public class MataKuliahModel {
 	private Integer kuota;
 	private Integer sks;
 	
-	private List<DosenModel> dosens;
-	private List<MahasiswaModel> mahasiswas;
+	private List<UserModel> dosens;
+	private List<UserModel> mahasiswas;
 }

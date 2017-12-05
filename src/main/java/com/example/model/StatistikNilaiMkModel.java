@@ -11,12 +11,12 @@ import lombok.NoArgsConstructor;
 public class StatistikNilaiMkModel {
 	private Integer id;
 	private String kode_mk;
-	private Integer id_nilai_tertinggi;
-	private Integer id_nilai_terendah;
+	private Double nilai_tertinggi;
+	private Double nilai_terendah;
 	private Double nilai_average;
 	private Double std_deviasi;
 	
 	private MataKuliahModel matakuliah;
-	private List<NilaiMkModel> nilai_tertinggi;
-	private List<NilaiMkModel> nilai_terendah;
+	private List<NilaiMkModel> nilai_tertinggis;
+	private List<NilaiMkModel> nilai_terendahs;
 }
