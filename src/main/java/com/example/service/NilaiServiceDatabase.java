@@ -23,5 +23,10 @@ public class NilaiServiceDatabase implements NilaiService{
 		return nilaiMapper.lihatNilai(kode_mk);
 	}
 	
+	public void setNilai (NilaiMkModel nilai) {
+		log.info("menambah nilai untuk mahasiswa");
+		nilaiMapper.setNilai(nilai);
+	}
+	
 	
 }

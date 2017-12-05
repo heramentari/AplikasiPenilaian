@@ -27,4 +27,6 @@ public interface NilaiMapper {
 	
 	@Insert("INSERT INTO nilai_mk (kode_mk, npm, nilai) VALUES (#{kode_mk}, #{npm}, #{nilai})")
 	void tambahNilai (NilaiMkModel nilaiMk);
+
+	void setNilai(NilaiMkModel nilai);
 }

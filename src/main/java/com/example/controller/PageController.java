@@ -29,6 +29,8 @@ public class PageController {
 	
 	DosenModel dosen;
 	
+	NilaiMkModel nilaiModel;
+	
 	public PageController() {
 		UserModel dosenuser = new UserModel();
 		DosenModel dosen = new DosenModel();
@@ -108,6 +110,7 @@ public class PageController {
 	@RequestMapping("/nilai/{id}")
 	public String isiNilai(Model model, @PathVariable(value = "id") String id) {
 		
+		//NilaiMkModel nilai = 
 		return "isi-nilai";
 	}
 }
