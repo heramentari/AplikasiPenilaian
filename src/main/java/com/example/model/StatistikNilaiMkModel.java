@@ -15,7 +15,6 @@ public class StatistikNilaiMkModel {
 	private Double nilai_terendah;
 	private Double nilai_average;
 	private Double std_deviasi;
-	
 	private MataKuliahModel matakuliah;
 	private List<NilaiMkModel> nilai_tertinggis;
 	private List<NilaiMkModel> nilai_terendahs;

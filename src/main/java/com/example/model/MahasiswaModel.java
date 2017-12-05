@@ -11,7 +11,6 @@ import lombok.NoArgsConstructor;
 public class MahasiswaModel {
 	private String npm;
 	private Integer user_id;
-	
 	private UserModel user;
 	private List<MataKuliahModel> matakuliahs;
 }
