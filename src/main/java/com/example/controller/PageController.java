@@ -58,7 +58,7 @@ public class PageController {
 		return "statistik-mata-kuliah";
 	}
 	
-	@RequestMapping("/nilai/{id}")
+	@RequestMapping("/detail/{kode_mk}/nilai/{id}")
 	public String isiNilai(Model model, @PathVariable(value = "id") String id) {
 		
 		//NilaiMkModel nilai = 

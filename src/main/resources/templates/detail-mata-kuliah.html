@@ -57,20 +57,23 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr th:each="nilaiMk, iterationStatus : ${mk.nilais}">
+									<tr th:each="student, iterationStatus : ${mk.students}">
 						                <td th:text="${iterationStatus.count}"></td>
-						                <td th:text="${nilaiMk.npm}"></td>
-						                <td th:text="${nilaiMk.mahasiswa.nama}"></td>
-						                <td th:text="${nilaiMk.nilai}"></td>
-						                <td th:if="${nilaiMk.nilai>=85}">A</td>
-						                <td th:if="${nilaiMk.nilai>=80}" th:unless="${nilaiMk.nilai>=85}">A-</td>
-						                <td th:if="${nilaiMk.nilai>=75}" th:unless="${nilaiMk.nilai>=80}">B+</td>
-						                <td th:if="${nilaiMk.nilai>=70}" th:unless="${nilaiMk.nilai>=75}">B</td>
-						                <td th:if="${nilaiMk.nilai>=65}" th:unless="${nilaiMk.nilai>=70}">B-</td>
-						                <td th:if="${nilaiMk.nilai>=60}" th:unless="${nilaiMk.nilai>=65}">C+</td>
-						                <td th:if="${nilaiMk.nilai>=55}" th:unless="${nilaiMk.nilai>=60}">C</td>
-						                <td th:if="${nilaiMk.nilai>=50}" th:unless="${nilaiMk.nilai>=55}">D</td>
-						                <td th:unless="${nilaiMk.nilai>=50}">E</td>
+						                <td th:text="${student.npm}"></td>
+						                <td th:text="${student.mahasiswa.nama}"></td>
+						                <td th:text="${student.nilai}"></td>
+						                
+						                <td th:if="${student.nilai>=85}">A</td>
+						                <td th:if="${student.nilai>=80}" th:unless="${student.nilai>=85}">A-</td>
+						                <td th:if="${student.nilai>=75}" th:unless="${student.nilai>=80}">B+</td>
+						                <td th:if="${student.nilai>=70}" th:unless="${student.nilai>=75}">B</td>
+						                <td th:if="${student.nilai>=65}" th:unless="${student.nilai>=70}">B-</td>
+						                <td th:if="${student.nilai>=60}" th:unless="${student.nilai>=65}">C+</td>
+						                <td th:if="${student.nilai>=55}" th:unless="${student.nilai>=60}">C</td>
+						                <td th:if="${student.nilai>=50}" th:unless="${student.nilai>=55}">D</td>
+						                <td th:unless="${student.nilai>=50}">E</td>
+						                
+						                <a th:href="@{'/detail/' + mk.kode_mk + '/nilai/' + student.id}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
 						            </tr>
 								</tbody>
 							</table>
