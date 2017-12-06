@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;
 
 import com.example.model.MataKuliahModel;
+import com.example.model.NilaiMkModel;
 import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 
@@ -12,13 +13,9 @@ public interface PenilaianService
     
     MataKuliahModel selectCourse (String kode_mk);
 
-    List<UserModel> selectAllUsers ();
-    
-    List<UserModel> selectStudents ();
-    
-    List<UserModel> selectLecturers ();
-    
     List<MataKuliahModel> selectCoursesByUser (String id);
+    
+    NilaiMkModel selectScore(String npm, String kode_mk);
     
     StatistikNilaiMkModel lihatStatistikMatkul (String kode_mk);
     

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.PenilaianMapper;
 import com.example.model.MataKuliahModel;
+import com.example.model.NilaiMkModel;
 import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 
@@ -28,32 +29,15 @@ public class PenilaianServiceDatabase implements PenilaianService
 	public MataKuliahModel selectCourse(String kode_mk) {
 		return penilaianMapper.selectCourse(kode_mk);
 	}
-
-
-	@Override
-	public List<UserModel> selectAllUsers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public List<UserModel> selectStudents() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
-	@Override
-	public List<UserModel> selectLecturers() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-
+	
 	@Override
 	public List<MataKuliahModel> selectCoursesByUser(String id) {
 		return penilaianMapper.selectCoursesByUser(id);
+	}
+	
+	@Override
+	public NilaiMkModel selectScore(String npm, String kode_mk) {
+		return penilaianMapper.selectScore(npm, kode_mk);
 	}
 
 	@Override

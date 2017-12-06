@@ -25,6 +25,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.antMatchers("/js/**").permitAll()
 			.antMatchers("/DataTables/**").permitAll()
 			.antMatchers("/**").hasRole("DOSEN")
+			.antMatchers("/api/**").hasRole("SYSTEM")
 			.anyRequest().authenticated()
 			.and()
 			.formLogin().loginPage("/login").permitAll()

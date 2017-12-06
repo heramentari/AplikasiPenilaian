@@ -72,6 +72,18 @@ public interface PenilaianMapper {
 	})
 	UserModel selectUserById(@Param("id") String id);
 	
+	@Select("SELECT * FROM nilai_mk WHERE npm = #{npm} AND kode_mk = #{kode_mk}")
+	@Results(value = {
+			@Result(property = "id", column = "id"),
+			@Result(property = "npm", column = "npm"),
+			@Result(property = "kode_mk", column = "kode_mk"),
+			@Result(property = "nilai", column = "nilai"),
+			@Result(property = "mahasiswa", column = "npm",
+					javaType = UserModel.class,
+					one = @One(select = "selectUserById"))
+	})
+	NilaiMkModel selectScore(@Param("npm") String npm, @Param("kode_mk") String kode_mk);
+	
 	@Select("SELECT * FROM statistik_nilai_mk, mata_kuliah WHERE statistik_nilai_mk.kode_mata_kuliah = #{kode_mk} AND mata_kuliah.kode_mk = #{kode_mk}")
 	@Results(value = {
 			@Result(property = "id", column = "statistik_nilai_mk.id"),
