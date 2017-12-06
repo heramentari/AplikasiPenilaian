@@ -14,6 +14,9 @@ import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 import com.example.service.PenilaianService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Controller
 public class PageController {
 	@Autowired
@@ -47,6 +50,10 @@ public class PageController {
 		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
 		model.addAttribute("mk", mk);
 		StatistikNilaiMkModel statistik = penilaianDAO.lihatStatistikMatkul(kode_mk);
+		statistik.setNpmTertinggi(penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk).getNpmTertinggi());
+		statistik.setNamaTertinggi(penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk).getNamaTertinggi());
+		statistik.setNpmTerendah(penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk).getNpmTerendah());
+		statistik.setNamaTerendah(penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk).getNamaTerendah());
 		model.addAttribute("statistik", statistik);
 		return "statistik-mata-kuliah";
 	}

@@ -61,4 +61,14 @@ public class PenilaianServiceDatabase implements PenilaianService
 		return penilaianMapper.lihatStatistikMatkul(kode_mk);
 	}
 
+	@Override
+	public StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(String kode_mk) {
+		return penilaianMapper.selectNamaStatistikNilaiTertinggi(kode_mk);
+	}
+
+	@Override
+	public StatistikNilaiMkModel selectNamaStatistikNilaiTerendah(String kode_mk) {
+		return penilaianMapper.selectNamaStatistikNilaiTerendah(kode_mk);
+	}
+
 }

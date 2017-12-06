@@ -21,4 +21,8 @@ public interface PenilaianService
     List<MataKuliahModel> selectCoursesByUser (String id);
     
     StatistikNilaiMkModel lihatStatistikMatkul (String kode_mk);
+    
+    StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(String kode_mk);
+    
+    StatistikNilaiMkModel selectNamaStatistikNilaiTerendah (String kode_mk);
 }

@@ -11,6 +11,10 @@ import lombok.NoArgsConstructor;
 public class StatistikNilaiMkModel {
 	private Integer id;
 	private String kode_mk;
+	private String npmTertinggi;
+	private String namaTertinggi;
+	private String npmTerendah;
+	private String namaTerendah;
 	private Double nilai_tertinggi;
 	private Double nilai_terendah;
 	private Double nilai_average;

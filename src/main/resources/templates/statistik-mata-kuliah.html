@@ -69,13 +69,13 @@
 								<div class="col-sm-6">
 									<strong>Mahasiswa dengan nilai tertinggi</strong><br/>
 									<ul>
-										<li>1506520 Hera Mentari Putri</li>
+										<li><div th:text="${statistik.npmTertinggi} + ' ' + ${statistik.namaTertinggi}"></div></li>
 									</ul>
 								</div>
 								<div class="col-sm-6">
 									<strong>Mahasiswa dengan nilai terendah</strong><br/>
 									<ul>
-										<li>17063133 Remco van der Veen</li>
+										<li><div th:text="${statistik.npmTerendah} + ' ' + ${statistik.namaTerendah}"></div></li>
 									</ul>
 								</div>
 								<div class="col-sm-4">
