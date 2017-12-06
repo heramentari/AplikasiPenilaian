@@ -3,6 +3,7 @@ package com.example.dao;
 import java.sql.JDBCType;
 import java.util.List;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Many;
 import org.apache.ibatis.annotations.One;
 import org.apache.ibatis.annotations.Mapper;
@@ -122,4 +123,10 @@ public interface PenilaianMapper {
 	
 	@Update("UPDATE nilai_mk SET nilai = #{nilai} WHERE npm = #{npm} and kode_mk = #{kode_mk}")
 	void updateNilaiMk(@Param("kode_mk") String kode_mk, @Param("npm") String npm,  @Param("nilai") double nilai);
+
+	@Insert("INSERT INTO statistik_nilai_mk (kode_mata_kuliah, nilai_tertinggi, nilai_terendah, nilai_average, std_deviasi) VALUES (#{kode_mk}, #{nilai_tertinggi}, #{nilai_terendah}, #{nilai_average}, #{std_deviasi})")
+	void insertStatistics(StatistikNilaiMkModel statistik_nilai_mk);
+	
+	@Update("UPDATE statistik_nilai_mk SET nilai_tertinggi = #{nilai_tertinggi}, nilai_terendah = #{nilai_terendah}, nilai_average = #{nilai_average}, std_deviasi = #{std_deviasi} WHERE kode_mata_kuliah = #{kode_mk}")
+	void updateStatistics(StatistikNilaiMkModel statistik_nilai_mk);
 }

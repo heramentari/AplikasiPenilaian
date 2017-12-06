@@ -2,6 +2,7 @@ package com.example.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +46,12 @@ public class PenilaianServiceDatabase implements PenilaianService
 	}
 	
 	@Override
+	public List<NilaiMkModel> selectScoresByCourse(String kode_mk){
+		log.info("Selected scores by course with kode mk {}", kode_mk);
+		return penilaianMapper.selectScoresByCourse(kode_mk);
+	}
+	
+	@Override
 	public NilaiMkModel selectScore(String npm, String kode_mk) {
 		log.info("Selected score");
 		return penilaianMapper.selectScore(npm, kode_mk);
@@ -72,5 +79,16 @@ public class PenilaianServiceDatabase implements PenilaianService
 	public void isiNilai(String kode_mk, String id, double nilaiBaru) {
 		log.info("Updated score for {}", id);
 		penilaianMapper.updateNilaiMk(kode_mk, id, nilaiBaru);
+	}
+	
+	public void insertStatistics(StatistikNilaiMkModel snm) {
+		log.info("Insert new statistics for course {}", snm.getKode_mk());
+		penilaianMapper.insertStatistics(snm);
+	}
+	
+	public void updateStatistics(StatistikNilaiMkModel snm) {
+		log.info("Update statistics for course {}", snm.getKode_mk());
+		System.out.println(snm);
+		penilaianMapper.updateStatistics(snm);
 	}
 }

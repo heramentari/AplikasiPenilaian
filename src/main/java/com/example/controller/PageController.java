@@ -51,13 +51,16 @@ public class PageController {
 	@RequestMapping("/statistik/{kode_mk}")
 	public String statistikMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
 		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
+		
+		StatistikNilaiMkModel statistik = penilaianDAO.lihatStatistikMatkul(kode_mk);
+		if (statistik == null) { statistik = this.updateStatistics(kode_mk); }
+		
 		List<NilaiMkModel> tertinggis = penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk);
 		List<NilaiMkModel> terendahs = penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk);
 		
 		model.addAttribute("tertinggis", tertinggis);
 		model.addAttribute("terendahs", terendahs);
 		model.addAttribute("mk", mk);
-		StatistikNilaiMkModel statistik = penilaianDAO.lihatStatistikMatkul(kode_mk);
 		model.addAttribute("statistik", statistik);
 		return "statistik-mata-kuliah";
 	}
@@ -81,6 +84,59 @@ public class PageController {
 		
 		penilaianDAO.isiNilai(kode_mk, id, nilaiBaru);
 		
+		this.updateStatistics(kode_mk);
+		
 		return "redirect:/detail/" + kode_mk;
+	}
+	
+	public StatistikNilaiMkModel updateStatistics(String kode_mk) {
+		StatistikNilaiMkModel snm = penilaianDAO.lihatStatistikMatkul(kode_mk);
+		List<NilaiMkModel> nilais = penilaianDAO.selectScoresByCourse(kode_mk);
+		boolean isNew = false;
+		
+		if (snm == null) {
+			isNew = true;
+			snm = new StatistikNilaiMkModel();
+		}
+		
+		NilaiMkModel highest = null;
+		NilaiMkModel lowest = null;
+		
+		double total = 0.0;
+		
+		for (NilaiMkModel nmk : nilais) {
+			// for calculating average later
+			total += nmk.getNilai();
+			if (highest == null || nmk.getNilai() > highest.getNilai()) {
+				highest = nmk;
+			}
+			if (lowest == null || nmk.getNilai() < lowest.getNilai()) {
+				lowest = nmk;
+			}
+		}
+		
+		double avg = total / nilais.size();
+		
+		// calculate standard deviation
+		double tsd = 0;
+		for (NilaiMkModel nmk : nilais) {
+		    tsd += Math.pow(nmk.getNilai() - avg, 2) / nilais.size();
+		}
+		double sd = Math.sqrt(tsd);
+		
+		snm.setNilai_average(avg);
+		snm.setNilai_terendah(lowest.getNilai());
+		snm.setNilai_tertinggi(highest.getNilai());
+		snm.setStd_deviasi(sd);
+		
+		if (isNew) {
+			snm.setKode_mk(kode_mk);
+			penilaianDAO.insertStatistics(snm);
+		}
+		else {
+			penilaianDAO.updateStatistics(snm);
+		}
+		
+		return snm;
 	}
 }
