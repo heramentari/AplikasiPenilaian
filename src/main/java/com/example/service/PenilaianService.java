@@ -21,8 +21,7 @@ public interface PenilaianService
     
     StatistikNilaiMkModel lihatStatistikMatkul (String kode_mk);
     
-    StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(String kode_mk);
+    List<NilaiMkModel> selectNamaStatistikNilaiTertinggi(String kode_mk);
     
-    StatistikNilaiMkModel selectNamaStatistikNilaiTerendah (String kode_mk);
-
+    List <NilaiMkModel> selectNamaStatistikNilaiTerendah (String kode_mk);
 }
