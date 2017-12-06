@@ -59,11 +59,12 @@ public class PageController {
 	}
 	
 	@RequestMapping("/detail/{kode_mk}/nilai/{id}")
-	public String isiNilai(Model model, @PathVariable(value = "id") String id) {
+	public String isiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
 		UserModel mahasiswa = penilaianDAO.selectUserById(id);
 		
 		model.addAttribute("mahasiswa", mahasiswa);
+		model.addAttribute("kode_mk", kode_mk);
 		
 		return "isi-nilai";
 	}

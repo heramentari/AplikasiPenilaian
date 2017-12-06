@@ -68,11 +68,17 @@ public interface PenilaianMapper {
 	@Select("SELECT * FROM users WHERE id = #{id}")
 	@Results(value = {
 			@Result(property = "user_id", column = "id"),
-			@Result(property = "nama", column = "nama")
+			@Result(property = "username", column = "username"),
+			@Result(property = "password", column = "password"),
+			@Result(property = "nama", column = "nama"),
+			@Result(property = "role", column = "role"),
+			@Result(property = "matakuliahs", column = "id",
+					javaType = List.class,
+					many = @Many(select = "selectCoursesByUser"))
 	})
 	UserModel selectUserById(@Param("id") String id);
 	
-	@Select("SELECT * FROM nilai_mk WHERE npm = #{npm} AND kode_mk = #{kode_mk}")
+	@Select("SELECT * FROM nilai_mk WHERE id = #{id} AND kode_mk = #{kode_mk}")
 	@Results(value = {
 			@Result(property = "id", column = "id"),
 			@Result(property = "npm", column = "npm"),
