@@ -60,10 +60,14 @@ public class PageController {
 		return "statistik-mata-kuliah";
 	}
 	
-	@RequestMapping("/nilai/{id}")
-	public String isiNilai(Model model, @PathVariable(value = "id") String id) {
+	@RequestMapping("/detail/{kode_mk}/nilai/{id}")
+	public String isiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
-		//NilaiMkModel nilai = 
+		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		
+		model.addAttribute("mahasiswa", mahasiswa);
+		model.addAttribute("kode_mk", kode_mk);
+		
 		return "isi-nilai";
 	}
 }

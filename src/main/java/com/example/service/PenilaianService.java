@@ -11,6 +11,8 @@ public interface PenilaianService
 {
     UserModel selectUser (String username);
     
+    UserModel selectUserById(String id);
+    
     MataKuliahModel selectCourse (String kode_mk);
 
     List<MataKuliahModel> selectCoursesByUser (String id);

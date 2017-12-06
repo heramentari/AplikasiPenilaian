@@ -33,7 +33,6 @@
 							<hr/>
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<a th:href="@{'/nilai/' + mk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
 									<a th:href="'/statistik/' + ${mk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Statistik</button></a>
 								</div>
 							</div>
@@ -54,6 +53,7 @@
 										<th>Nama</th>
 										<th>Nilai Akhir</th>
 										<th>Nilai Huruf</th>
+										<th>Ubah Nilai</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -62,6 +62,7 @@
 						                <td th:text="${nilaiMk.npm}"></td>
 						                <td th:text="${nilaiMk.mahasiswa.nama}"></td>
 						                <td th:text="${nilaiMk.nilai}"></td>
+						                
 						                <td th:if="${nilaiMk.nilai>=85}">A</td>
 						                <td th:if="${nilaiMk.nilai>=80}" th:unless="${nilaiMk.nilai>=85}">A-</td>
 						                <td th:if="${nilaiMk.nilai>=75}" th:unless="${nilaiMk.nilai>=80}">B+</td>
@@ -71,6 +72,10 @@
 						                <td th:if="${nilaiMk.nilai>=55}" th:unless="${nilaiMk.nilai>=60}">C</td>
 						                <td th:if="${nilaiMk.nilai>=50}" th:unless="${nilaiMk.nilai>=55}">D</td>
 						                <td th:unless="${nilaiMk.nilai>=50}">E</td>
+						                
+						                <td>
+						                	<a th:href="${'/detail/' + mk.kode_mk + '/nilai/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+						            	</td>
 						            </tr>
 								</tbody>
 							</table>
