@@ -24,4 +24,6 @@ public interface PenilaianService
     List<NilaiMkModel> selectNamaStatistikNilaiTertinggi(String kode_mk);
     
     List <NilaiMkModel> selectNamaStatistikNilaiTerendah (String kode_mk);
+
+	void isiNilai(String kode_mk, String id, double nilaiBaru);
 }

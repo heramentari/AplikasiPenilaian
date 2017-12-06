@@ -10,6 +10,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 import org.apache.ibatis.type.JdbcType;
 
 import com.example.model.*;
@@ -118,4 +119,7 @@ public interface PenilaianMapper {
 			@Result(property = "namaTerendah", column = "nama")
 	})
     List<NilaiMkModel> selectNilaiTerendahs (@Param("kode_mata_kuliah") String kode_mata_kuliah);
+	
+	@Update("UPDATE nilai_mk SET nilai = #{nilai} WHERE npm = #{npm} and kode_mk = #{kode_mk}")
+	void updateNilaiMk(@Param("kode_mk") String kode_mk, @Param("npm") String npm,  @Param("nilai") double nilai);
 }

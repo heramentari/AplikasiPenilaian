@@ -44,18 +44,18 @@
 					<div class="card-body">
 						<h4 class="card-title">Isi nilai</h4>
 						<p class="card-text">
-		                    <form class="form" th:action="@{/login}" method="post">
+		                    <form class="form" th:action="${'/detail/'+ nilaiMk.kode_mk + '/nilai/' + mahasiswa.user_id +'/submit'}" method="post">
 		                           
 								<div class="input-group form-group-no-border row">
 		                               	
 									<div class="col-sm-5">Nilai Akhir</div>
 									
-									<input type="text" name="username" class="form-control" th:value="${nilaiMk.nilai}" />
+									<input type="text" name="nilaiBaru" class="form-control" th:value="${nilaiMk.nilai}" />
 
 	                           </div>
 	                           
 		                       <div class="text-center">
-		                           <a href="/nilai/CSC01"><button class="btn btn-primary btn-round btn-sm mx-2" type="button">Simpan</button></a>
+		                       		<button class="btn btn-primary btn-round btn-sm mx-2" type="submit" name="action" value="save">Simpan</button>
 		                       </div>
 		                   </form>
 						</p>

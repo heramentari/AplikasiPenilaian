@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.model.MataKuliahModel;
 import com.example.model.NilaiMkModel;
@@ -72,15 +74,13 @@ public class PageController {
 		return "isi-nilai";
 	}
 	
-	@RequestMapping("/detail/{kode_mk}/nilai/{id}/submit")
-	public String submitNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
+	@RequestMapping(value = "/detail/{kode_mk}/nilai/{id}/submit", method = RequestMethod.POST)
+	public String submitNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk,
+			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
+		) {
 		
-		UserModel mahasiswa = penilaianDAO.selectUserById(id);
-		NilaiMkModel nilaiMk = penilaianDAO.selectScore(id, kode_mk);
+		penilaianDAO.isiNilai(kode_mk, id, nilaiBaru);
 		
-		model.addAttribute("mahasiswa", mahasiswa);
-		model.addAttribute("nilaiMk", nilaiMk);
-		
-		return "detail-mata-kuliah";
+		return "redirect:/detail/" + kode_mk;
 	}
 }

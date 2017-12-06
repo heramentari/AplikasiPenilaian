@@ -67,4 +67,10 @@ public class PenilaianServiceDatabase implements PenilaianService
 		log.info("Selected student with the lowest score for course {}", kode_mk);
 		return penilaianMapper.selectNilaiTerendahs(kode_mk);
 	}
+
+	@Override
+	public void isiNilai(String kode_mk, String id, double nilaiBaru) {
+		log.info("Updated score for {}", id);
+		penilaianMapper.updateNilaiMk(kode_mk, id, nilaiBaru);
+	}
 }
