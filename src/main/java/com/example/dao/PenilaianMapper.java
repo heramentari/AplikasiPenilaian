@@ -95,17 +95,35 @@ public interface PenilaianMapper {
 	})
 	StatistikNilaiMkModel lihatStatistikMatkul(@Param("kode_mk") String kode_mk);
 	
-	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_tertinggi = N.nilai AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
+//	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_tertinggi = N.nilai AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
+//	@Results(value = {
+//			@Result(property = "npmTertinggi", column = "id"),
+//			@Result(property = "namaTertinggi", column = "nama")
+//	})
+//	StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(@Param("kode_mata_kuliah") String kode_mata_kuliah);
+	
+//	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_terendah = N.nilai AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
+//	@Results(value = {
+//			@Result(property = "npmTerendah", column = "id"),
+//			@Result(property = "namaTerendah", column = "nama")
+//	})
+//	StatistikNilaiMkModel selectNamaStatistikNilaiTerendah(@Param("kode_mata_kuliah") String kode_mata_kuliah);
+	
+	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S "
+			+ "WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_tertinggi = N.nilai "
+			+ "AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
 	@Results(value = {
 			@Result(property = "npmTertinggi", column = "id"),
 			@Result(property = "namaTertinggi", column = "nama")
 	})
-	StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(@Param("kode_mata_kuliah") String kode_mata_kuliah);
+    List<NilaiMkModel> selectNilaiTertinggis (@Param("kode_mata_kuliah") String kode_mata_kuliah);
 	
-	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_terendah = N.nilai AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
+	@Select("SELECT U.id, U.nama FROM users U, nilai_mk N, statistik_nilai_mk S "
+			+ "WHERE U.id = N.npm AND N.kode_mk = S.kode_mata_kuliah AND S.nilai_terendah = N.nilai "
+			+ "AND S.kode_mata_kuliah = #{kode_mata_kuliah}")
 	@Results(value = {
 			@Result(property = "npmTerendah", column = "id"),
 			@Result(property = "namaTerendah", column = "nama")
 	})
-	StatistikNilaiMkModel selectNamaStatistikNilaiTerendah(@Param("kode_mata_kuliah") String kode_mata_kuliah);
+    List<NilaiMkModel> selectNilaiTerendahs (@Param("kode_mata_kuliah") String kode_mata_kuliah);
 }

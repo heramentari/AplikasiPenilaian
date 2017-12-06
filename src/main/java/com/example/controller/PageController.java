@@ -14,6 +14,7 @@ import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 import com.example.service.PenilaianService;
 
+import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -48,12 +49,13 @@ public class PageController {
 	@RequestMapping("/statistik/{kode_mk}")
 	public String statistikMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
 		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
+		List<NilaiMkModel> tertinggis = penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk);
+		List<NilaiMkModel> terendahs = penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk);
+		
+		model.addAttribute("tertinggis", tertinggis);
+		model.addAttribute("terendahs", terendahs);
 		model.addAttribute("mk", mk);
 		StatistikNilaiMkModel statistik = penilaianDAO.lihatStatistikMatkul(kode_mk);
-		statistik.setNpmTertinggi(penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk).getNpmTertinggi());
-		statistik.setNamaTertinggi(penilaianDAO.selectNamaStatistikNilaiTertinggi(kode_mk).getNamaTertinggi());
-		statistik.setNpmTerendah(penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk).getNpmTerendah());
-		statistik.setNamaTerendah(penilaianDAO.selectNamaStatistikNilaiTerendah(kode_mk).getNamaTerendah());
 		model.addAttribute("statistik", statistik);
 		return "statistik-mata-kuliah";
 	}

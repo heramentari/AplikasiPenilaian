@@ -51,14 +51,14 @@ public class PenilaianServiceDatabase implements PenilaianService
 	}
 
 	@Override
-	public StatistikNilaiMkModel selectNamaStatistikNilaiTertinggi(String kode_mk) {
+	public List<NilaiMkModel> selectNamaStatistikNilaiTertinggi(String kode_mk) {
 		log.info("Selected student with the highest score for course {}", kode_mk);
-		return penilaianMapper.selectNamaStatistikNilaiTertinggi(kode_mk);
+		return penilaianMapper.selectNilaiTertinggis(kode_mk);
 	}
 
 	@Override
-	public StatistikNilaiMkModel selectNamaStatistikNilaiTerendah(String kode_mk) {
+	public List<NilaiMkModel> selectNamaStatistikNilaiTerendah(String kode_mk) {
 		log.info("Selected student with the lowest score for course {}", kode_mk);
-		return penilaianMapper.selectNamaStatistikNilaiTerendah(kode_mk);
+		return penilaianMapper.selectNilaiTerendahs(kode_mk);
 	}
 }

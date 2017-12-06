@@ -68,14 +68,14 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<strong>Mahasiswa dengan nilai tertinggi</strong><br/>
-									<ul>
-										<li><div th:text="${statistik.npmTertinggi} + ' ' + ${statistik.namaTertinggi}"></div></li>
+									<ul th:each="tertinggi, iterationStatus: ${tertinggis}">
+										<li th:text="${tertinggi.npmTertinggi} + ' ' + ${tertinggi.namaTertinggi}">NPM - Nama</li>
 									</ul>
 								</div>
 								<div class="col-sm-6">
 									<strong>Mahasiswa dengan nilai terendah</strong><br/>
-									<ul>
-										<li><div th:text="${statistik.npmTerendah} + ' ' + ${statistik.namaTerendah}"></div></li>
+									<ul th:each="terendah, iterationStatus: ${terendahs}">
+										<li th:text="${terendah.npmTerendah} + ' ' + ${terendah.namaTerendah}"></li>
 									</ul>
 								</div>
 								<div class="col-sm-4">
