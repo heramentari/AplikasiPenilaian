@@ -50,8 +50,8 @@
 		                               	
 									<div class="col-sm-5">Nilai Akhir</div>
 									
-									<input type="text" name="nilaiBaru" class="form-control" th:value="${nilaiMk.nilai}" />
-
+									<input id="nilaiBaru" type="number" step="any" min="0" max="100" name="nilaiBaru" class="form-control" th:value="${nilaiMk.nilai}" />
+									<p id="demo"></p>
 	                           </div>
 	                           
 		                       <div class="text-center">
@@ -67,4 +67,5 @@
 	<!-- /container -->
 	<div th:replace="fragments/fragment :: footer"></div>
 </body>
+
 </html>
