@@ -19,18 +19,16 @@
 						<hr/>
 						<p class="card-text">
 							<div class="row">
-								<div class="col-sm-5">Kode</div>
-								<div class="col-sm-5" th:text="CSC01"></div> <!-- ${matakuliah.kode_mk} -->
+								<div class="col-sm-5">Nama</div>
+								<div class="col-sm-5" th:text="${mahasiswa.nama}"></div> <!-- ${matakuliah.kode_mk} -->
 							</div>
 							<div class="row">
-								<div class="col-sm-5">Mahasiswa</div>
-								<div class="col-sm-5" th:text="30"></div> <!-- ${#lists.size(matakuliah.mahasiswas)} -->
+								<div class="col-sm-5">NPM</div>
+								<div class="col-sm-5" th:text="${mahasiswa.npm}"></div> <!-- ${#lists.size(matakuliah.mahasiswas)} -->
 							</div>
-							<div class="row">
-								<div class="col-sm-5">Term</div>
-								<div class="col-sm-5" th:text="2018-1"></div> <!-- ${matakuliah.periode} -->
-							</div>
+							
 							<hr/>
+							
 							<div class="row">
 								<div class="col-sm-12 text-center">
 									<a href="/nilai/CSC01"><button class="btn btn-primary btn-round" type="button">Detail</button></a>

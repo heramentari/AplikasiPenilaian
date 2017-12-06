@@ -27,6 +27,12 @@ public class PenilaianServiceDatabase implements PenilaianService
 	}
 	
 	@Override
+	public UserModel selectUserById(String id) {
+		log.info("Selected user with username {}", id);
+		return penilaianMapper.selectUserById(id);
+	}
+	
+	@Override
 	public MataKuliahModel selectCourse(String kode_mk) {
 		log.info("Selected course with kode mk {}", kode_mk);
 		return penilaianMapper.selectCourse(kode_mk);
