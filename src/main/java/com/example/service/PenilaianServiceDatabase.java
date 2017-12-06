@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.dao.PenilaianMapper;
 import com.example.model.MataKuliahModel;
+import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 
 import lombok.extern.slf4j.Slf4j;
@@ -53,6 +54,11 @@ public class PenilaianServiceDatabase implements PenilaianService
 	@Override
 	public List<MataKuliahModel> selectCoursesByUser(String id) {
 		return penilaianMapper.selectCoursesByUser(id);
+	}
+
+	@Override
+	public StatistikNilaiMkModel lihatStatistikMatkul(String kode_mk) {
+		return penilaianMapper.lihatStatistikMatkul(kode_mk);
 	}
 
 }

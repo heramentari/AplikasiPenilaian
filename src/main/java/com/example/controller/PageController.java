@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.model.MataKuliahModel;
 import com.example.model.NilaiMkModel;
+import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 import com.example.service.PenilaianService;
 import com.example.service.MataKuliahService;
@@ -49,8 +50,12 @@ public class PageController {
 		return "detail-mata-kuliah";
 	}
 	
-	@RequestMapping("/statistik/{id}")
-	public String statistikMataKuliah(Model model, @PathVariable(value = "id") String id) {
+	@RequestMapping("/statistik/{kode_mk}")
+	public String statistikMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
+		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
+		model.addAttribute("mk", mk);
+		StatistikNilaiMkModel statistik = penilaianDAO.lihatStatistikMatkul(kode_mk);
+		model.addAttribute("statistik", statistik);
 		return "statistik-mata-kuliah";
 	}
 	

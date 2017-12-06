@@ -15,25 +15,25 @@
 			<div class="col-sm-4">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">APAP</h4>
+						<h4 class="card-title">RINGKASAN</h4>
 						<hr/>
 						<p class="card-text">
 							<div class="row">
 								<div class="col-sm-5">Kode</div>
-								<div class="col-sm-5" th:text="CSC01"></div> <!-- ${statistik.kode_mk} -->
+								<div class="col-sm-5" th:text="${statistik.kode_mk}"></div> <!-- ${statistik.kode_mk} -->
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Mahasiswa</div>
-								<div class="col-sm-5" th:text="30"></div> <!-- ${#lists.size(statistik.matakuliah.mahasiswas)} -->
+								<div class="col-sm-5" th:text="${mk.kuota}"></div> <!-- ${#lists.size(statistik.matakuliah.mahasiswas)} -->
 							</div>
 							<div class="row">
 								<div class="col-sm-5">Term</div>
-								<div class="col-sm-5" th:text="2018-1"></div> <!-- ${statistik.matakuliah.periode} -->
+								<div class="col-sm-5" th:text="${mk.periode}"></div> <!-- ${statistik.matakuliah.periode} -->
 							</div>
 							<hr/>
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<a href="/detail/CSC01"><button class="btn btn-primary btn-round" type="button">Detail</button></a>
+									<a th:href="'/detail/' + ${mk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Detail</button></a>
 								</div>
 							</div>
 						</p>
@@ -49,15 +49,19 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<strong>Nilai Tertinggi</strong><br/>
-									9.5<br/><br/>
+									<div th:text="${statistik.nilai_tertinggi}"></div>
+									<br/>
 									<strong>Nilai Terendah</strong><br/>
-									3.4
+									<div th:text="${statistik.nilai_terendah}"></div>
+									
 								</div>
 								<div class="col-sm-6">
 									<strong>Average</strong><br/>
-									5.5<br/><br/>
+									<div th:text="${statistik.nilai_average}"></div>
+									<br/>
 									<strong>Standard deviation</strong><br/>
-									2
+									<div th:text="${statistik.std_deviasi}"></div>
+									<br/>
 								</div>
 							</div>
 							<hr/>

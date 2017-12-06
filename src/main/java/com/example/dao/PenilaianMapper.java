@@ -71,4 +71,15 @@ public interface PenilaianMapper {
 			@Result(property = "sks", column = "mata_kuliah.sks")
 	})
 	List<MataKuliahModel> selectCoursesByUser(@Param("id") String id);
+	
+	@Select("SELECT * FROM statistik_nilai_mk, mata_kuliah WHERE statistik_nilai_mk.kode_mata_kuliah = #{kode_mk} AND mata_kuliah.kode_mk = #{kode_mk}")
+	@Results(value = {
+			@Result(property = "id", column = "statistik_nilai_mk.id"),
+			@Result(property = "kode_mk", column = "statistik_nilai_mk.kode_mk"),
+			@Result(property = "nilai_tertinggi", column = "statistik_nilai_mk.nilai_tertinggi"),
+			@Result(property = "nilai_terendah", column = "statistik_nilai_mk.nilai_terendah"),
+			@Result(property = "nilai_average", column = "statistik_nilai_mk.nilai_average"),
+			@Result(property = "std_deviasi", column = "statistik_nilai_mk.std_deviasi")
+	})
+	StatistikNilaiMkModel lihatStatistikMatkul(@Param("kode_mk") String kode_mk);
 }

@@ -3,6 +3,7 @@ package com.example.service;
 import java.util.List;
 
 import com.example.model.MataKuliahModel;
+import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 
 public interface PenilaianService
@@ -18,4 +19,6 @@ public interface PenilaianService
     List<UserModel> selectLecturers ();
     
     List<MataKuliahModel> selectCoursesByUser (String id);
+    
+    StatistikNilaiMkModel lihatStatistikMatkul (String kode_mk);
 }
