@@ -1,9 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-<title>500 internal server error</title>
+<head th:include="fragments/fragment :: head">
+<title id="pageTitle">505 Internal Server Error</title>
 </head>
 <body>
-	<h2>Internal server error</h2>
+	<div th:replace="fragments/fragment :: header"></div>
+	<div class="section container">
+		<ol class="breadcrumb">
+  			<li class="breadcrumb-item active">505 Internal Server Error</li>
+		</ol>
+		<div class="row">
+			<div class="col-sm-12">
+				<div class="card">
+					<div class="card-body text-center">
+						<p class="card-text-center">Mohon maaf telah terjadi kesalahan internal</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- /container -->
+	<div th:replace="fragments/fragment :: footer"></div>
 </body>
 </html>
