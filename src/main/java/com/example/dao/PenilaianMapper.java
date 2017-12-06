@@ -19,18 +19,18 @@ public interface PenilaianMapper {
 	
 	@Select("SELECT * FROM users WHERE username = #{username}")
 	@Results(value = {
-			@Result(property = "user_id", column = "user_id"),
+			@Result(property = "user_id", column = "id"),
 			@Result(property = "username", column = "username"),
 			@Result(property = "password", column = "password"),
 			@Result(property = "nama", column = "nama"),
 			@Result(property = "role", column = "role"),
-			@Result(property = "matakuliahs", column = "user_id",
+			@Result(property = "matakuliahs", column = "id",
 					javaType = List.class,
 					many = @Many(select = "selectCoursesByUser"))
 	})
 	UserModel selectUser(@Param("username") String username);
 	
-	@Select("SELECT * FROM users WHERE user_id = #{id}")
+	@Select("SELECT * FROM users WHERE id = #{id}")
 	@Results(value = {
 			@Result(property = "user_id", column = "user_id"),
 			@Result(property = "nama", column = "nama")
@@ -62,6 +62,13 @@ public interface PenilaianMapper {
 	})
 	List<NilaiMkModel> selectScoresByCourse(@Param("kode_mk") String kode_mk);
 	
-	@Select("SELECT * FROM mk_users, mata_kuliah WHERE mata_kuliah.kode_mk = mk_users.kode_mk AND mk_users.user_id = #{id}")
+	@Select("SELECT * FROM mk_users, mata_kuliah WHERE mata_kuliah.kode_mk = mk_users.kode_mk AND mk_users.id = #{id}")
+	@Results(value = {
+			@Result(property = "nama", column = "mata_kuliah.nama"),
+			@Result(property = "kode_mk", column = "mata_kuliah.kode_mk"),
+			@Result(property = "periode", column = "mata_kuliah.periode"),
+			@Result(property = "kuota", column = "mata_kuliah.kuota"),
+			@Result(property = "sks", column = "mata_kuliah.sks")
+	})
 	List<MataKuliahModel> selectCoursesByUser(@Param("id") String id);
 }

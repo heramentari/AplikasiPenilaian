@@ -9,7 +9,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class MataKuliahModel {
-	private Integer id;
 	private String nama;
 	private String kode_mk;
 	private String periode;
