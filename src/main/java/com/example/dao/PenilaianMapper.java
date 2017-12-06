@@ -67,7 +67,7 @@ public interface PenilaianMapper {
 		
 	@Select("SELECT * FROM users WHERE id = #{id}")
 	@Results(value = {
-			@Result(property = "user_id", column = "user_id"),
+			@Result(property = "user_id", column = "id"),
 			@Result(property = "nama", column = "nama")
 	})
 	UserModel selectUserById(@Param("id") String id);
