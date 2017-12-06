@@ -32,7 +32,7 @@
 							
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<a th:href="${'/detail/' + kode_mk}"><button class="btn btn-primary btn-round" type="button">Kembali</button></a>
+									<a th:href="${'/detail/' + nilaiMk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Kembali</button></a>
 								</div>
 							</div>
 						</p>
@@ -42,33 +42,23 @@
 			<div class="col-sm-8">
 				<div class="card">
 					<div class="card-body">
-						<h4 class="card-title">Arsitektur dan Pemrograman Aplikasi Perusahaan</h4>
+						<h4 class="card-title">Isi nilai</h4>
 						<p class="card-text">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>No.</th>
-										<th>NPM</th>
-										<th>Nama</th>
-										<th>Nilai Akhir</th>
-										<th>Nilai Huruf</th>
-									</tr>
-								</thead>
-								<tbody>
-									<!-- tr th:each="mk,iterationStatus: ${dosen.matakuliahs}">
-										<td th:text="${iterationStatus.count}"></td>
-										<td th:text="${mk.kode_mk}"></td>
-										<td th:text="${mk.nama}"></td>
-										<td th:text="${mk.sks}"></td>
-										<td><a th:href="${'/detail/' + mk.kode_mk}">Lihat</a></td>
-									</tr-->
-								</tbody>
-							</table>
+		                    <form class="form" th:action="@{/login}" method="post">
+		                           
+								<div class="input-group form-group-no-border row">
+		                               	
+									<div class="col-sm-5">Nilai Akhir</div>
+									
+									<input type="text" name="username" class="form-control" th:value="${nilaiMk.nilai}" />
+
+	                           </div>
+	                           
+		                       <div class="text-center">
+		                           <a href="/nilai/CSC01"><button class="btn btn-primary btn-round btn-sm mx-2" type="button">Simpan</button></a>
+		                       </div>
+		                   </form>
 						</p>
-						<div class="text-center">
-									<a href="#"><button class="btn btn-primary btn-simple btn-round btn-sm mx-2" type="button">Kembali</button></a>
-									<a href="/nilai/CSC01"><button class="btn btn-primary btn-round btn-sm mx-2" type="button">Simpan</button></a>
-						</div>
 					</div>
 				</div>
 			</div>

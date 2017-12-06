@@ -78,7 +78,7 @@ public interface PenilaianMapper {
 	})
 	UserModel selectUserById(@Param("id") String id);
 	
-	@Select("SELECT * FROM nilai_mk WHERE id = #{id} AND kode_mk = #{kode_mk}")
+	@Select("SELECT * FROM nilai_mk WHERE npm = #{npm} AND kode_mk = #{kode_mk}")
 	@Results(value = {
 			@Result(property = "id", column = "id"),
 			@Result(property = "npm", column = "npm"),

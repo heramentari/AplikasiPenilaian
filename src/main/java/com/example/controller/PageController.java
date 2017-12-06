@@ -62,10 +62,23 @@ public class PageController {
 	public String isiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
 		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		NilaiMkModel nilaiMk = penilaianDAO.selectScore(id, kode_mk);
 		
 		model.addAttribute("mahasiswa", mahasiswa);
-		model.addAttribute("kode_mk", kode_mk);
+		model.addAttribute("nilaiMk", nilaiMk);
 		
 		return "isi-nilai";
+	}
+	
+	@RequestMapping("/detail/{kode_mk}/nilai/{id}/submit")
+	public String submitNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
+		
+		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		NilaiMkModel nilaiMk = penilaianDAO.selectScore(id, kode_mk);
+		
+		model.addAttribute("mahasiswa", mahasiswa);
+		model.addAttribute("nilaiMk", nilaiMk);
+		
+		return "detail-mata-kuliah";
 	}
 }
