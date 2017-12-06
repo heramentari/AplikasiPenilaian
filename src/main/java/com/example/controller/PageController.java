@@ -13,19 +13,11 @@ import com.example.model.NilaiMkModel;
 import com.example.model.StatistikNilaiMkModel;
 import com.example.model.UserModel;
 import com.example.service.PenilaianService;
-import com.example.service.MataKuliahService;
-import com.example.service.NilaiService;
 
 @Controller
 public class PageController {
 	@Autowired
 	PenilaianService penilaianDAO;
-	
-	@Autowired
-	NilaiService nilaiDAO;
-	
-	@Autowired
-	MataKuliahService mataKuliahDAO;
 	
 	@RequestMapping("/login")
 	public String login(Model model) {
