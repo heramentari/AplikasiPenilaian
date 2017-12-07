@@ -57,7 +57,19 @@
 									</tr>
 								</thead>
 								<tbody>
+									<tr th:each="mahasiswa, iterationStatus : ${mk.mahasiswas}">
+						                <td th:text="${iterationStatus.count}"></td>
+						                <td th:text="${mahasiswa.user_id}"></td>
+						                <td th:text="${mahasiswa.nama}"></td>
+						                
+						                <td>
+						                	<a th:href="${'/detail/' + mk.kode_mk + '/nilai/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+						            	</td>
+						            </tr>
+						            
+						            
 									<tr th:each="nilaiMk, iterationStatus : ${mk.nilais}">
+										
 						                <td th:text="${iterationStatus.count}"></td>
 						                <td th:text="${nilaiMk.npm}"></td>
 						                <td th:text="${nilaiMk.mahasiswa.nama}"></td>
@@ -71,10 +83,11 @@
 						                <td th:if="${nilaiMk.nilai>=60}" th:unless="${nilaiMk.nilai>=65}">C+</td>
 						                <td th:if="${nilaiMk.nilai>=55}" th:unless="${nilaiMk.nilai>=60}">C</td>
 						                <td th:if="${nilaiMk.nilai>=50}" th:unless="${nilaiMk.nilai>=55}">D</td>
-						                <td th:unless="${nilaiMk.nilai>=50}">E</td>
-						                
+						                <td th:if="${nilaiMk.nilai>=1}" th:unless="${nilaiMk.nilai>=50}">E</td>
+						                <td th:unless="${nilaiMk.nilai>=1}">Kosong</td>
 						                <td>
-						                	<a th:href="${'/detail/' + mk.kode_mk + '/nilai/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+						                	<a th:if="${nilaiMk.nilai>=1}" th:href="${'/detail/' + mk.kode_mk + '/nilai/ubah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+						            		<a th:unless="${nilaiMk.nilai>=1}" th:href="${'/detail/' + mk.kode_mk + '/nilai/tambah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Isi Nilai</button></a>
 						            	</td>
 						            </tr>
 								</tbody>

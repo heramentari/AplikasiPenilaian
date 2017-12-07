@@ -55,13 +55,12 @@ public interface PenilaianMapper {
 	})
 	MataKuliahModel selectCourse(@Param("kode_mk") String kode_mk);
 	
-	@Select("SELECT * FROM nilai_mk WHERE kode_mk = #{kode_mk}")
+	@Select("SELECT * FROM mk_users LEFT JOIN nilai_mk on mk_users.id = nilai_mk.npm and nilai_mk.kode_mk = mk_users.kode_mk WHERE mk_users.kode_mk = #{kode_mk} and mk_users.id like '123%'")
 	@Results(value = {
-			@Result(property = "id", column = "id"),
-			@Result(property = "npm", column = "npm"),
+			@Result(property = "npm", column = "id"),
 			@Result(property = "kode_mk", column = "kode_mk"),
 			@Result(property = "nilai", column = "nilai"),
-			@Result(property = "mahasiswa", column = "npm",
+			@Result(property = "mahasiswa", column = "id",
 					javaType = UserModel.class,
 					one = @One(select = "selectUserById"))
 	})
@@ -123,10 +122,15 @@ public interface PenilaianMapper {
 	
 	@Update("UPDATE nilai_mk SET nilai = #{nilai} WHERE npm = #{npm} and kode_mk = #{kode_mk}")
 	void updateNilaiMk(@Param("kode_mk") String kode_mk, @Param("npm") String npm,  @Param("nilai") double nilai);
+	
+	@Insert("INSERT INTO nilai_mk (npm, kode_mk, nilai) VALUES(#{npm}, #{kode_mk}, #{nilai})")
+	void tambahNilaiMk(@Param("kode_mk") String kode_mk, @Param("npm") String id, @Param("nilai") double nilaiBaru);
 
 	@Insert("INSERT INTO statistik_nilai_mk (kode_mata_kuliah, nilai_tertinggi, nilai_terendah, nilai_average, std_deviasi) VALUES (#{kode_mk}, #{nilai_tertinggi}, #{nilai_terendah}, #{nilai_average}, #{std_deviasi})")
 	void insertStatistics(StatistikNilaiMkModel statistik_nilai_mk);
 	
 	@Update("UPDATE statistik_nilai_mk SET nilai_tertinggi = #{nilai_tertinggi}, nilai_terendah = #{nilai_terendah}, nilai_average = #{nilai_average}, std_deviasi = #{std_deviasi} WHERE kode_mata_kuliah = #{kode_mk}")
 	void updateStatistics(StatistikNilaiMkModel statistik_nilai_mk);
+
+
 }

@@ -21,18 +21,18 @@
 						<p class="card-text">
 							<div class="row">
 								<div class="col-sm-5">Nama</div>
-								<div class="col-sm-5" th:text="${mahasiswa.nama}"></div>
+								<div class="col-sm-5" th:text="${mahasiswa.nama}"></div> <!-- ${matakuliah.kode_mk} -->
 							</div>
 							<div class="row">
 								<div class="col-sm-5">NPM</div>
-								<div class="col-sm-5" th:text="${mahasiswa.user_id}"></div>
+								<div class="col-sm-5" th:text="${mahasiswa.user_id}"></div> <!-- ${#lists.size(matakuliah.mahasiswas)} -->
 							</div>
 							
 							<hr/>
 							
 							<div class="row">
 								<div class="col-sm-12 text-center">
-									<a th:href="${'/detail/' + kode_mk}"><button class="btn btn-primary btn-round" type="button">Kembali</button></a>
+									<a th:href="${'/detail/' + nilaiMk.kode_mk}"><button class="btn btn-primary btn-round" type="button">Kembali</button></a>
 								</div>
 							</div>
 						</p>
@@ -44,13 +44,13 @@
 					<div class="card-body">
 						<h4 class="card-title">Isi nilai</h4>
 						<p class="card-text">
-		                    <form class="form" th:action="${'/detail/'+ kode_mk + '/nilai/tambah/' + mahasiswa.user_id +'/submit'}" method="post">
+		                    <form class="form" th:action="${'/detail/'+ nilaiMk.kode_mk + '/nilai/ubah/' + mahasiswa.user_id +'/submit'}" method="post">
 		                           
 								<div class="input-group form-group-no-border row">
 		                               	
 									<div class="col-sm-5">Nilai Akhir</div>
 									
-									<input id="nilaiBaru" type="number" step="any" min="0" max="100" name="nilaiBaru" class="form-control" placeholder="Isi nilai" />
+									<input id="nilaiBaru" type="number" step="any" min="0" max="100" name="nilaiBaru" class="form-control" th:value="${nilaiMk.nilai}" />
 									<p id="demo"></p>
 	                           </div>
 	                           

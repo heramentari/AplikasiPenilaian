@@ -81,6 +81,13 @@ public class PenilaianServiceDatabase implements PenilaianService
 		penilaianMapper.updateNilaiMk(kode_mk, id, nilaiBaru);
 	}
 	
+	@Override
+	public void tambahIsiNilai(String kode_mk, String id, double nilaiBaru) {
+		log.info("Added score for {}", id);
+		penilaianMapper.tambahNilaiMk(kode_mk, id, nilaiBaru);
+		
+	}
+	
 	public void insertStatistics(StatistikNilaiMkModel snm) {
 		log.info("Insert new statistics for course {}", snm.getKode_mk());
 		penilaianMapper.insertStatistics(snm);
@@ -91,4 +98,5 @@ public class PenilaianServiceDatabase implements PenilaianService
 		System.out.println(snm);
 		penilaianMapper.updateStatistics(snm);
 	}
+
 }

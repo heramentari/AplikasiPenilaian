@@ -44,6 +44,8 @@ public class PageController {
 	@RequestMapping("/detail/{kode_mk}")
 	public String detailMataKuliah(Model model, @PathVariable(value = "kode_mk") String kode_mk) {
 		MataKuliahModel mk = penilaianDAO.selectCourse(kode_mk);
+		
+		
 		model.addAttribute("mk", mk);
 		return "detail-mata-kuliah";
 	}
@@ -65,7 +67,7 @@ public class PageController {
 		return "statistik-mata-kuliah";
 	}
 	
-	@RequestMapping("/detail/{kode_mk}/nilai/{id}")
+	@RequestMapping("/detail/{kode_mk}/nilai/ubah/{id}")
 	public String isiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
 		UserModel mahasiswa = penilaianDAO.selectUserById(id);
@@ -74,17 +76,40 @@ public class PageController {
 		model.addAttribute("mahasiswa", mahasiswa);
 		model.addAttribute("nilaiMk", nilaiMk);
 		
-		return "isi-nilai";
+		return "ubah-nilai";
 	}
 	
-	@RequestMapping(value = "/detail/{kode_mk}/nilai/{id}/submit", method = RequestMethod.POST)
+	@RequestMapping(value = "/detail/{kode_mk}/nilai/ubah/{id}/submit", method = RequestMethod.POST)
 	public String submitNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk,
 			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
 		) {
 		
 		penilaianDAO.isiNilai(kode_mk, id, nilaiBaru);
 		
-		this.updateStatistics(kode_mk);
+		//this.updateStatistics(kode_mk);
+		
+		return "redirect:/detail/" + kode_mk;
+	}
+	
+	@RequestMapping("/detail/{kode_mk}/nilai/tambah/{id}")
+	public String addIsiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
+		
+		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		
+		model.addAttribute("mahasiswa", mahasiswa);
+		model.addAttribute("kode_mk", kode_mk);
+		
+		return "isi-nilai";
+	}
+	
+	@RequestMapping(value = "/detail/{kode_mk}/nilai/tambah/{id}/submit", method = RequestMethod.POST)
+	public String submitNilai2(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk,
+			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
+		) {
+		
+		penilaianDAO.tambahIsiNilai(kode_mk, id, nilaiBaru);
+		
+		//this.updateStatistics(kode_mk);
 		
 		return "redirect:/detail/" + kode_mk;
 	}

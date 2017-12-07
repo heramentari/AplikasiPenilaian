@@ -34,4 +34,6 @@ public interface PenilaianService
 	void insertStatistics(StatistikNilaiMkModel snm);
 	
 	void updateStatistics(StatistikNilaiMkModel snm);
+
+	void tambahIsiNilai(String kode_mk, String id, double nilaiBaru);
 }
