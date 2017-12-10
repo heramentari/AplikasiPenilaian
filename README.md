@@ -2,9 +2,9 @@
 
 
 API List:
-* [getNilaiKuliah/[npm]/[kode_mk]](#getnilaikuliah)
-* [getDaftarNilaiKuliah/[kode_mk]](#getdaftarnilaikuliah)
-* [getStatistikNilaiKuliah/[kode_mk]](#getstatistiknilaikuliah)
+* getNilaiKuliah/[npm]/[kode_mk]
+* getDaftarNilaiKuliah/[kode_mk]
+* getStatistikNilaiKuliah/[kode_mk]
 
 ## getNilaiKuliah/[npm]/[kode_mk]
 
@@ -28,7 +28,6 @@ Mengembalikan nilai suatu mata kuliah dari seorang mahasiswa
       "npm": "1234567890",
       "kode_mk": "CSC123",
       "nilai": 76.25
-    ]
   }
 }
 ```
@@ -59,16 +58,16 @@ Mengembalikan daftar peserta dan nilai suatu mata kuliah
   "status": 200,
   "msg": "success",
   "result": {
-    "kode_mk”: “CSC123”,
-    "mahasiswa”: [
+    "kode_mk": "CSC123",
+    "mahasiswa": [
       {
-        “npm”: ”1502424149”,
-        “nama”: ”Aji”,
+        "npm": "1502424149",
+        "nama": "Aji",
        "nilai": 76.25
       },
       {
-        “npm”: ”1506689420”,
-        “nama”: ”Hera”,
+        "npm": "1506689420",
+        "nama": "Hera",
         "nilai": 99.99
       }
     ]
@@ -101,11 +100,11 @@ Mengembalikan data statistik dari suatu mata kuliah
   "status": 200,
   "msg": "success",
   "result": {
-    “statistik_nilai_mk": {
+    "statistik_nilai_mk": {
       "id": "CSC123",
       "nilai_tertinggi": 93.34,
-      “nilai_terendah”: 45.32,
-      “nilai_average”: 73.25,
+      "nilai_terendah": 45.32,
+      "nilai_average": 73.25,
       "std_deviasi": 34.32
     }
   }
