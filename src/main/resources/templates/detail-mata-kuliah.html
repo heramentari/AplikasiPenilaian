@@ -56,18 +56,7 @@
 										<th>Ubah Nilai</th>
 									</tr>
 								</thead>
-								<tbody>
-									<tr th:each="mahasiswa, iterationStatus : ${mk.mahasiswas}">
-						                <td th:text="${iterationStatus.count}"></td>
-						                <td th:text="${mahasiswa.user_id}"></td>
-						                <td th:text="${mahasiswa.nama}"></td>
-						                
-						                <td>
-						                	<a th:href="${'/detail/' + mk.kode_mk + '/nilai/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
-						            	</td>
-						            </tr>
-						            
-						            
+								<tbody>	
 									<tr th:each="nilaiMk, iterationStatus : ${mk.nilais}">
 										
 						                <td th:text="${iterationStatus.count}"></td>

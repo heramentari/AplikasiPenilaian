@@ -71,10 +71,14 @@ public class PageController {
 	public String isiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
 		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		
+		MataKuliahModel matkul = penilaianDAO.selectCourse(kode_mk);
+		
 		NilaiMkModel nilaiMk = penilaianDAO.selectScore(id, kode_mk);
 		
 		model.addAttribute("mahasiswa", mahasiswa);
 		model.addAttribute("nilaiMk", nilaiMk);
+		model.addAttribute("matkul", matkul);
 		
 		return "ubah-nilai";
 	}
@@ -95,9 +99,11 @@ public class PageController {
 	public String addIsiNilai(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk) {
 		
 		UserModel mahasiswa = penilaianDAO.selectUserById(id);
+		MataKuliahModel matkul = penilaianDAO.selectCourse(kode_mk);
 		
 		model.addAttribute("mahasiswa", mahasiswa);
 		model.addAttribute("kode_mk", kode_mk);
+		model.addAttribute("matkul", matkul);
 		
 		return "isi-nilai";
 	}
