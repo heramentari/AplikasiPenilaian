@@ -95,7 +95,6 @@ public class PenilaianServiceDatabase implements PenilaianService
 	
 	public void updateStatistics(StatistikNilaiMkModel snm) {
 		log.info("Update statistics for course {}", snm.getKode_mk());
-		System.out.println(snm);
 		penilaianMapper.updateStatistics(snm);
 	}
 
