@@ -88,7 +88,7 @@ Mengembalikan daftar peserta dan nilai suatu mata kuliah
 
 Mengembalikan data statistik dari suatu mata kuliah
 
-**URL** : `/getUniversitasList/[id_univ]/[id_fakultas]`
+**URL** : `/getStatistikNilaiKuliah/[kode_mk]`
 
 **Method** : `GET`
 
