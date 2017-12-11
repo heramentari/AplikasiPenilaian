@@ -88,6 +88,10 @@ public class PageController {
 			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
 		) {
 		
+		if (nilaiBaru == 0) {
+			nilaiBaru = 0.0000001;
+		}
+		
 		penilaianDAO.updateNilai(kode_mk, id, nilaiBaru);
 		
 		this.updateStatistics(kode_mk);
@@ -112,8 +116,10 @@ public class PageController {
 	public String submitNilai2(Model model, @PathVariable(value = "id") String id, @PathVariable(value = "kode_mk") String kode_mk,
 			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
 		) {
+			if (nilaiBaru == 0) {
+				nilaiBaru = 0.0000001;
+			}
 		
-	
 			penilaianDAO.tambahIsiNilai(kode_mk, id, nilaiBaru);
 			
 			this.updateStatistics(kode_mk);

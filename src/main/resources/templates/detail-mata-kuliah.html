@@ -63,7 +63,9 @@
 						                <td th:text="${iterationStatus.count}"></td>
 						                <td th:text="${nilaiMk.npm}"></td>
 						                <td th:text="${nilaiMk.mahasiswa.nama}"></td>
-						                <td th:text="${nilaiMk.nilai}"></td>
+						                <td th:if="${nilaiMk.nilai>0.0000001}" th:text="${nilaiMk.nilai}"></td>
+						                <td th:if="${nilaiMk.nilai==0.0000001}" th:text="0"></td>
+						                <td th:unless="${nilaiMk.nilai>=0.0000001}">Kosong</td>
 						                
 						                <td th:if="${nilaiMk.nilai>=85}">A</td>
 						                <td th:if="${nilaiMk.nilai>=80}" th:unless="${nilaiMk.nilai>=85}">A-</td>
@@ -73,11 +75,11 @@
 						                <td th:if="${nilaiMk.nilai>=60}" th:unless="${nilaiMk.nilai>=65}">C+</td>
 						                <td th:if="${nilaiMk.nilai>=55}" th:unless="${nilaiMk.nilai>=60}">C</td>
 						                <td th:if="${nilaiMk.nilai>=50}" th:unless="${nilaiMk.nilai>=55}">D</td>
-						                <td th:if="${nilaiMk.nilai>=1}" th:unless="${nilaiMk.nilai>=50}">E</td>
-						                <td th:unless="${nilaiMk.nilai>=1}">Kosong</td>
+						                <td th:if="${nilaiMk.nilai>=0.0000001}" th:unless="${nilaiMk.nilai>=50}">E</td>
+						                <td th:unless="${nilaiMk.nilai>=0.0000001}">Kosong</td>
 						                <td>
-						                	<a th:if="${nilaiMk.nilai>=1}" th:href="${'/detail/' + mk.kode_mk + '/nilai/ubah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
-						            		<a th:unless="${nilaiMk.nilai>=1}" th:href="${'/detail/' + mk.kode_mk + '/nilai/tambah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Isi Nilai</button></a>
+						                	<a th:if="${nilaiMk.nilai>=0.0000001}" th:href="${'/detail/' + mk.kode_mk + '/nilai/ubah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Ubah Nilai</button></a>
+						            		<a th:unless="${nilaiMk.nilai>=0.0000001}" th:href="${'/detail/' + mk.kode_mk + '/nilai/tambah/' + nilaiMk.npm}"><button class="btn btn-primary btn-round" type="button">Isi Nilai</button></a>
 						            	</td>
 						            </tr>
 								</tbody>
