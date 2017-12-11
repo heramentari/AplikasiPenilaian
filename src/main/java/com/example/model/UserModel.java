@@ -16,5 +16,4 @@ public class UserModel {
 	private String role;
 	
 	private List<MataKuliahModel> matakuliahs;
-	private List<NilaiMkModel> nilais;
 }

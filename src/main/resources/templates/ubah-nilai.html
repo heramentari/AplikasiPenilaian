@@ -2,7 +2,7 @@
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:include="fragments/fragment :: head">
-<title id="pageTitle">Isi Nilai</title>
+<title id="pageTitle">Ubah Nilai</title>
 </head>
 <body>
 	<div th:replace="fragments/fragment :: header"></div>
@@ -10,7 +10,7 @@
 		<ol class="breadcrumb">
   			<li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
   			<li class="breadcrumb-item"><a th:href="${'/detail/' + kode_mk}">Detail</a></li>
-  			<li class="breadcrumb-item active">Isi nilai</li>
+  			<li class="breadcrumb-item active">Ubah nilai</li>
 		</ol>
 		<div class="row">
 			<div class="col-sm-4">
@@ -44,6 +44,11 @@
 									</tr>
 								</thead>
 								<tbody>
+									<tr>
+						                <td>A</td>
+						                <td>85</td>
+						                <td>100</td>
+						            </tr>
 									<tr>
 						                <td>A-</td>
 						                <td>80</td>

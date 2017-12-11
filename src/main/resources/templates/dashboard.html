@@ -50,7 +50,7 @@
 								<thead>
 									<tr>
 										<th>No.</th>
-										<th>Kode Mata Kuliah</th>
+										<th>Kode</th>
 										<th>Nama Mata Kuliah</th>
 										<th>SKS</th>
 										<th></th>
@@ -62,7 +62,7 @@
 										<td th:text="${mk.kode_mk}"></td>
 										<td th:text="${mk.nama}"></td>
 										<td th:text="${mk.sks}"></td>
-										<td class="text-center">
+										<td class="text-center" style="width: 200px">
 											<a th:href="${'/detail/' + mk.kode_mk}"><span class="badge badge-primary mr-2">Detail</span></a>
 											<a th:href="${'/statistik/' + mk.kode_mk}"><span class="badge badge-primary">Statistik</span></a>
 										</td>
