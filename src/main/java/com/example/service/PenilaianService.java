@@ -29,7 +29,7 @@ public interface PenilaianService
     
     List <NilaiMkModel> selectNamaStatistikNilaiTerendah (String kode_mk);
 
-	void isiNilai(String kode_mk, String id, double nilaiBaru);
+	void updateNilai(String kode_mk, String id, double nilaiBaru);
 	
 	void insertStatistics(StatistikNilaiMkModel snm);
 	

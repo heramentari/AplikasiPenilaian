@@ -76,7 +76,7 @@ public class PenilaianServiceDatabase implements PenilaianService
 	}
 
 	@Override
-	public void isiNilai(String kode_mk, String id, double nilaiBaru) {
+	public void updateNilai(String kode_mk, String id, double nilaiBaru) {
 		log.info("Updated score for {}", id);
 		penilaianMapper.updateNilaiMk(kode_mk, id, nilaiBaru);
 	}

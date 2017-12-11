@@ -88,7 +88,7 @@ public class PageController {
 			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
 		) {
 		
-		penilaianDAO.isiNilai(kode_mk, id, nilaiBaru);
+		penilaianDAO.updateNilai(kode_mk, id, nilaiBaru);
 		
 		this.updateStatistics(kode_mk);
 		
@@ -113,11 +113,13 @@ public class PageController {
 			@RequestParam(value = "nilaiBaru", required = false) double nilaiBaru
 		) {
 		
-		penilaianDAO.tambahIsiNilai(kode_mk, id, nilaiBaru);
+	
+			penilaianDAO.tambahIsiNilai(kode_mk, id, nilaiBaru);
+			
+			this.updateStatistics(kode_mk);
+			
+			return "redirect:/detail/" + kode_mk;
 		
-		this.updateStatistics(kode_mk);
-		
-		return "redirect:/detail/" + kode_mk;
 	}
 	
 	public StatistikNilaiMkModel updateStatistics(String kode_mk) {
