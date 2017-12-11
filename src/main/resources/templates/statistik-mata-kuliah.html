@@ -49,10 +49,13 @@
 							<div class="row">
 								<div class="col-sm-6">
 									<strong>Nilai Tertinggi</strong><br/>
-									<div th:text="${statistik.nilai_tertinggi}"></div>
+									<div th:if="${statistik.nilai_tertinggi>0.0000001}"  th:text="${statistik.nilai_tertinggi}"></div>
+					                <div th:if="${statistik.nilai_tertinggi==0.0000001}" th:text="0.0"></div>
+					                
 									<br/>
 									<strong>Nilai Terendah</strong><br/>
-									<div th:text="${statistik.nilai_terendah}"></div>
+									<div th:if="${statistik.nilai_terendah>0.0000001}" th:text="${statistik.nilai_terendah}"></div>
+					                <div th:if="${statistik.nilai_terendah==0.0000001}" th:text="0.0"></div>
 									
 								</div>
 								<div class="col-sm-6">
