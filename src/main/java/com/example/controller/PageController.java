@@ -90,7 +90,7 @@ public class PageController {
 		
 		penilaianDAO.isiNilai(kode_mk, id, nilaiBaru);
 		
-		//this.updateStatistics(kode_mk);
+		this.updateStatistics(kode_mk);
 		
 		return "redirect:/detail/" + kode_mk;
 	}
@@ -115,7 +115,7 @@ public class PageController {
 		
 		penilaianDAO.tambahIsiNilai(kode_mk, id, nilaiBaru);
 		
-		//this.updateStatistics(kode_mk);
+		this.updateStatistics(kode_mk);
 		
 		return "redirect:/detail/" + kode_mk;
 	}
