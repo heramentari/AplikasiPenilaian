@@ -2,21 +2,21 @@
 
 
 API List:
-* getNilaiKuliah/[npm]/[kode_mk]
-* getDaftarNilaiKuliah/[kode_mk]
-* getStatistikNilaiKuliah/[kode_mk]
+* api/getNilaiKuliah/[npm]/[kode_mk]
+* api/getDaftarNilaiKuliah/[kode_mk]
+* api/getStatistikNilaiKuliah/[kode_mk]
 
-## getNilaiKuliah/[npm]/[kode_mk]
+## api/getNilaiKuliah/[npm]/[kode_mk]
 
 Mengembalikan nilai suatu mata kuliah dari seorang mahasiswa
 
-**URL** : `/getNilaiKuliah/[npm]/[kode_mk]`
+**URL** : `api/getNilaiKuliah/[npm]/[kode_mk]`
 
 **Method** : `GET`
 
 ### Success Response
 
-**Contoh Request**: /getNilaiKuliah/15041412/CSC123
+**Contoh Request**: api/getNilaiKuliah/15041412/CSC123
 
 ```json
 {
@@ -35,23 +35,23 @@ Mengembalikan nilai suatu mata kuliah dari seorang mahasiswa
 
 **Condition** :  Jika npm dan atau kode_mk tidak valid.
 
-**Contoh Request**: /getNilaiKuliah/123/213
+**Contoh Request**: api/getNilaiKuliah/123/213
 
 ```json
 {"status":404,"msg":"Mahasiswa dan atau mata kuliah tidak ditemukan"}
 ```
 
-## getDaftarNilaiKuliah/[kode_mk]
+## api/getDaftarNilaiKuliah/[kode_mk]
 
 Mengembalikan daftar peserta dan nilai suatu mata kuliah
 
-**URL** : ` /getDaftarNilaiKuliah/[kode_mk]`
+**URL** : ` api/getDaftarNilaiKuliah/[kode_mk]`
 
 **Method** : `GET`
 
 ### Success Response
 
-**Contoh Request**: /getDaftarNilaiKuliah/CSC123
+**Contoh Request**: api/getDaftarNilaiKuliah/CSC123
 
 ```json
 {
@@ -78,22 +78,22 @@ Mengembalikan daftar peserta dan nilai suatu mata kuliah
 
 **Condition** :  Jika kode_mk tidak valid.
 
-**Contoh Request**: /getDaftarNilaiKuliah/123
+**Contoh Request**: api/getDaftarNilaiKuliah/123
 
 ```json
 {"status":404,"msg":"Mata Kuliah tidak ditemukan"}
 ```
 
-## getStatistikNilaiKuliah/[kode_mk]
+## api/getStatistikNilaiKuliah/[kode_mk]
 
 Mengembalikan data statistik dari suatu mata kuliah
 
-**URL** : `/getStatistikNilaiKuliah/[kode_mk]`
+**URL** : `api/getStatistikNilaiKuliah/[kode_mk]`
 
 **Method** : `GET`
 
 ### Success Response
-**Contoh Request**: /getStatistikNilaiKuliah/CSC123
+**Contoh Request**: api/getStatistikNilaiKuliah/CSC123
 
 ```json
 {
@@ -115,7 +115,7 @@ Mengembalikan data statistik dari suatu mata kuliah
 
 **Condition** : Jika kode_mk tidak valid.
 
-**Contoh Request**: /getStatistikNilaiKuliah/123
+**Contoh Request**: api/getStatistikNilaiKuliah/123
 
 ```json
 {"status":404,"msg":"Mata Kuliah tidak ditemukan"}
